@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,body {
+  font-family: 'Raleway', sans-serif;
+  background: rgba(250, 146, 113, 1);;
+  line-height: 1.6rem;
+  height: 100vh;
+  color: #fff;
+}
+
+nav {
+  background: rgba(255, 223, 213, 0.25);
+}
+
+.nav-container {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+}
+
+.nav-container .nav-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-container .nav-logo img {
+  width: 50px;
+  margin: 0 1rem;
+}
+
+
+/* MAIN SECTION */
+.main-container {
+  margin: 1rem auto;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
+.main-container .sub-container {
+  background: rgba(255, 223, 213, 0.25);
+  padding: 1rem;
+  border-radius: 5px;
+  max-width: 436px;
+  height: 400px;
+}
+
+.main-container .timer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-container .timer-container .timer-selection {
+  display: flex;
+  align-items: center;
+}
+
+.main-container .timer-container .timer-selection p {
+  margin: 0.5rem 0.2rem;
+  /* background:rgba(43, 38, 37, 0.25); */
+  border-radius: 3px;
+  padding: 0.3rem 0.7rem;
+  color: white;
+  font-weight: 600;
+}
+
+.main-container .timer-container .timer-selection p:hover {
+  cursor: pointer;
+}
+
+.main-container .timer-container .timer-selection .selected {
+  background:rgba(43, 38, 37, 0.25);
+}
+
+.main-container .timer-container .timer {
+  font-family: monospace;
+  font-size: 8rem;
+  font-weight: 600;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.main-container .timer-container .timer-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.main-container .timer-container .timer-buttons div {
+  height: 40px;
+  width: 100px;
+  margin: 2rem 0.5rem 0.5rem;
+  background: #fff;
+  color: rgba(250, 146, 113, 1);
+  border-radius: 3px;
+  text-align: center;
+  padding-top: 0.5rem;
+  font-weight: 500;
+}
+
+.main-container .timer-container .timer-buttons div:hover {
+ cursor: pointer;
+ background: rgba(43, 38, 37, 0.25);
+ color: #fff;
+ transition: 0.2s;
+}
+
+
+
+/* Grapefruit section */
+.grapefruit-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-gap: 0.3rem;
+  overflow: auto;
+}
+
+.grapefruit-container img {
+  width: 30px;
+  height: 30px;
+}
+
+
+
+
+/* .short-break-button {
+  pointer-events: none;
+} */
