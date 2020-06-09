@@ -9,6 +9,8 @@
     href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
   <title>Grapefruit Timer | Pompelmo Technique</title>
+  <link rel="shortcut icon" href="./grapefruit-icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
 </head>
 
@@ -22,11 +24,33 @@
       </div>
 
       <div class="nav-settings">
-        <p>Settings to go here</p>
+        <div class="timer-settings pompelmo-settings show-hide">
+          <label for="pompelmo-time">Pompelmo</label>
+          <div>
+            <input type="number" id='pompelmo-time' value='25'> min
+          </div>
+        </div>
+        <div class="timer-settings short-break-settings show-hide">
+          <label for="short-break-time">Short Break</label>
+          <div>
+            <input type="number" id='short-break-time' value='5'> min
+          </div>
+        </div>
+        <div class="timer-settings long-break-settings show-hide">
+          <label for="long-break-time">Long Break</label>
+          <div>
+            <input type="number" id='long-break-time' value='10'> min
+          </div>
+        </div>
+        <div class="show-settings-button"><i class="fa fa-cog" aria-hidden="true"></i>Settings</div>
       </div>
     </div>
   </nav>
 
+
+  <div class="progress-container">
+    <div class="progress-bar"></div>
+  </div>
 
   <div class="main-container">
     <div class="timer-container sub-container">

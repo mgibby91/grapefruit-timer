@@ -6,7 +6,8 @@
 
 html,body {
   font-family: 'Raleway', sans-serif;
-  background: rgba(250, 146, 113, 1);;
+  background: rgba(25,210,80, 1);
+  /* background: rgba(250, 146, 113, 1); */
   line-height: 1.6rem;
   height: 100vh;
   color: #fff;
@@ -17,7 +18,7 @@ nav {
 }
 
 .nav-container {
-  max-width: 600px;
+  max-width: 800px;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -36,6 +37,69 @@ nav {
   margin: 0 1rem;
 }
 
+/* Settings */
+.nav-settings {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 0.9rem;
+  width: 60%;
+}
+
+.nav-settings .timer-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 95px;
+  margin-left: 0.7rem;
+}
+
+.nav-settings .timer-settings.show-hide {
+  display: none;
+}
+
+.nav-settings input{
+ width: 40%;
+ padding: 0.1rem;
+}
+
+.nav-settings input:focus {
+  outline: none;
+}
+
+.show-settings-button {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.show-settings-button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.show-settings-button i {
+  padding-right: 0.3rem;
+}
+
+
+
+/* PROGRESS BAR */
+.progress-container {
+  margin: 20px auto;
+  max-width: 895px;
+  height: 20px;
+  background: rgba(255, 223, 213, 0.25);
+  border-radius: 3px;
+}
+
+.progress-container .progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #fff;
+  border-radius: 3px;
+}
+
 
 /* MAIN SECTION */
 .main-container {
@@ -50,7 +114,7 @@ nav {
   background: rgba(255, 223, 213, 0.25);
   padding: 1rem;
   border-radius: 5px;
-  max-width: 436px;
+  max-width: 450px;
   height: 400px;
 }
 
@@ -95,6 +159,7 @@ nav {
 .main-container .timer-container .timer-buttons {
   display: flex;
   align-items: center;
+  color: rgba(25,210,80, 1);
 }
 
 .main-container .timer-container .timer-buttons div {
@@ -102,7 +167,7 @@ nav {
   width: 100px;
   margin: 2rem 0.5rem 0.5rem;
   background: #fff;
-  color: rgba(250, 146, 113, 1);
+  /* color: rgba(250, 146, 113, 1); */
   border-radius: 3px;
   text-align: center;
   padding-top: 0.5rem;
@@ -114,6 +179,10 @@ nav {
  background: rgba(43, 38, 37, 0.25);
  color: #fff;
  transition: 0.2s;
+}
+
+.main-container.pointer-events-toggle {
+  pointer-events: none;
 }
 
 
@@ -133,8 +202,3 @@ nav {
 }
 
 
-
-
-/* .short-break-button {
-  pointer-events: none;
-} */
