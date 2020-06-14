@@ -65,7 +65,7 @@ function resetGeneralTimer() {
 
 
 // *****************************************************************************
-// Pompelmo, Short Break + Long Breal Event Listeners / Functions
+// Pompelmo, Short Break + Long Break Event Listeners / Functions
 // *****************************************************************************
 
 const buttonsArray = [pompelmoButton, shortBreakButton, longBreakButton];
@@ -111,6 +111,8 @@ function startTimer(whatButton, themeColor, countdownBoolean, minutesTime) {
 
   document.body.style.background = themeColor;
   timerButtons.style.color = themeColor;
+  document.querySelectorAll('.sort-btns')[0].style.color = themeColor;
+  document.querySelectorAll('.sort-btns')[1].style.color = themeColor;
 
   progressBar.style.width = '0%';
 
@@ -287,6 +289,8 @@ function changeBgOverPompelmo(totalSeconds) {
 
   document.body.style.background = `rgba(25, ${newGreen}, ${newBlue}, 1)`;
   document.querySelector('.timer-buttons').style.color = `rgba(25, ${newGreen}, ${newBlue}, 1)`;
+  document.querySelectorAll('.sort-btns')[0].style.color = `rgba(25, ${newGreen}, ${newBlue}, 1)`;
+  document.querySelectorAll('.sort-btns')[1].style.color = `rgba(25, ${newGreen}, ${newBlue}, 1)`;
 
 }
 
@@ -315,6 +319,8 @@ function changeBgOverBreak(totalSeconds) {
 
   document.body.style.background = `rgba(25, ${newGreen}, ${newBlue}, 1)`;
   document.querySelector('.timer-buttons').style.color = `rgba(25, ${newGreen}, ${newBlue}, 1)`;
+  document.querySelectorAll('.sort-btns')[0].style.color = `rgba(25, ${newGreen}, ${newBlue}, 1)`;
+  document.querySelectorAll('.sort-btns')[1].style.color = `rgba(25, ${newGreen}, ${newBlue}, 1)`;
 
 }
 
@@ -373,3 +379,349 @@ function showSettings() {
   // mainContainer.classList.toggle('pointer-events-toggle');
 
 }
+
+
+
+
+
+// *****************************************************************************
+// Task List
+// *****************************************************************************
+
+
+// QUESTION FOR LL - How can I click on document to exit out of submitTaskContainer
+// I think it's not working because of event bubbling
+
+const submitTaskContainer = document.querySelector('.submit-task-container');
+const submitTaskPriority = document.querySelector('.submit-task-priority');
+const addTaskButton = document.querySelector('.add-task');
+const cancelSubmitTask = document.querySelector('#cancel');
+
+addTaskButton.addEventListener('click', showTaskInput);
+function showTaskInput() {
+
+  addTaskButton.style.display = 'none';
+  submitTaskContainer.style.display = 'flex';
+
+}
+
+cancelSubmitTask.addEventListener('click', hideTaskInput);
+function hideTaskInput() {
+
+  addTaskButton.style.display = 'flex';
+  submitTaskContainer.style.display = 'none';
+
+}
+
+// submitTaskPriority.addEventListener('click', switchSelectedPriority);
+// function switchSelectedPriority(e) {
+
+//   if (e.target.className === 'priorities-scale') {
+//     e.target.classList.add('priorities-selected');
+//   } else if (e.target.parentElement.className === 'priorities-scale') {
+//     e.target.parentElement.classList.add('priorities-selected');
+//   }
+
+// }
+
+const priorityChoices = document.querySelectorAll('.priorities-scale');
+
+function toggleSelectedPriorityClass() {
+
+  for (let priority of priorityChoices) {
+    priority.addEventListener('click', function () {
+
+      const selectedPriority = document.querySelector('.priorities-scale.priorities-selected');
+
+      selectedPriority.classList.remove('priorities-selected');
+      priority.classList.add('priorities-selected');
+    });
+  }
+
+}
+
+toggleSelectedPriorityClass();
+
+// Save task to list
+const taskSaveButton = document.querySelector('#save');
+const taskInput = document.querySelector('#task-input');
+const tasksSection = document.querySelector('.tasks-section');
+
+
+let taskListData = getTasksFromLS();
+
+taskSaveButton.addEventListener('click', saveTaskToList);
+function saveTaskToList() {
+
+  if (taskInput.value) {
+
+    const selectedPriority = document.querySelector('.priorities-scale.priorities-selected');
+
+    const grapefruitNum = Number(selectedPriority.id[0]);
+    let grapefruitImgHTML = '';
+
+    for (let i = 0; i < grapefruitNum; i++) {
+      grapefruitImgHTML += '<img src="./grapefruit-icon.png">\n';
+    }
+
+    const newTaskHMTL = `
+    <div class="task-item">
+        <div class="task-left">
+          <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
+          <p class='task-name'>${taskInput.value}</p>
+        </div>
+        <div class="task-right">
+          <div class='task-priority'>
+            ${grapefruitImgHTML}
+          </div>
+          <p class='task-edit'>EDIT</p>
+          <i class="fa fa-times-circle fa-lg" aria-hidden="true"></i>
+        </div>
+      </div>
+    `;
+
+    tasksSection.insertAdjacentHTML('beforeend', newTaskHMTL);
+
+    taskListData.push({ task: taskInput.value, gfNum: grapefruitNum, isCompleted: false });
+
+    addTaskToLS(taskInput.value, grapefruitNum, false);
+
+    taskInput.value = '';
+
+    addTaskButton.style.display = 'flex';
+    submitTaskContainer.style.display = 'none';
+
+  }
+
+}
+
+// Maybe add error message if click save and have no input
+
+
+// Delete tasks
+tasksSection.addEventListener('click', deleteTask);
+function deleteTask(e) {
+
+  if (e.target.className === 'fa fa-times-circle fa-lg' || e.target.className === 'task-edit') {
+    e.target.parentElement.parentElement.remove();
+
+    const taskToRemove = e.target.parentElement.parentElement.children[0].children[1].textContent;
+
+    taskListData.forEach((task, index) => {
+      if (task.task === taskToRemove) {
+        taskListData.splice(index, 1);
+      }
+    });
+
+    deleteTaskFromLS(taskToRemove);
+  }
+
+}
+
+
+// Cross out task completed
+tasksSection.addEventListener('click', completedTask);
+function completedTask(e) {
+
+  if (e.target.className === 'fa fa-check-circle fa-lg' || e.target.className === 'fa fa-check-circle fa-lg circle-checked') {
+    e.target.parentElement.children[1].classList.toggle('task-completed');
+    e.target.classList.toggle('circle-checked');
+
+    for (let task of taskListData) {
+      if (e.target.className === 'fa fa-check-circle fa-lg circle-checked') {
+        if (e.target.parentElement.children[1].textContent === task.task) {
+          task.isCompleted = true;
+          deleteTaskFromLS(task.task);
+          addTaskToLS(task.task, task.gfNum, true);
+          console.log(taskListData);
+        }
+      }
+
+      if (e.target.className === 'fa fa-check-circle fa-lg') {
+        if (e.target.parentElement.children[1].textContent === task.task) {
+          task.isCompleted = false;
+          deleteTaskFromLS(task.task);
+          addTaskToLS(task.task, task.gfNum, false);
+          console.log(taskListData);
+        }
+      }
+    }
+  }
+
+
+}
+
+
+// Add task to LS
+function addTaskToLS(taskText, priorityNum, completedBoolean) {
+
+  let taskList;
+  if (localStorage.getItem('taskList') === null) {
+    taskList = [];
+  } else {
+    taskList = JSON.parse(localStorage.getItem('taskList'));
+  }
+
+  taskList.push({ task: taskText, gfNum: priorityNum, isCompleted: completedBoolean });
+  localStorage.setItem('taskList', JSON.stringify(taskList));
+
+}
+
+
+// Remove task from LS
+function deleteTaskFromLS(taskToDelete) {
+
+  let taskList;
+  if (localStorage.getItem('taskList') === null) {
+    taskList = [];
+  } else {
+    taskList = JSON.parse(localStorage.getItem('taskList'));
+  }
+
+  taskList.forEach((task, index) => {
+    if (task.task === taskToDelete) {
+      taskList.splice(index, 1);
+    }
+  });
+
+  localStorage.setItem('taskList', JSON.stringify(taskList));
+
+}
+
+
+
+function getTasksFromLS() {
+
+  let taskList;
+  if (localStorage.getItem('taskList') === null) {
+    taskList = [];
+  } else {
+    taskList = JSON.parse(localStorage.getItem('taskList'));
+  }
+
+  addTasksToList(taskList);
+
+  return taskList;
+}
+
+getTasksFromLS();
+// Should add save and load if the task is checked off or not
+
+
+// Sort by priority
+const sortByPriorityButton = document.querySelector('#sort-priority');
+
+sortByPriorityButton.addEventListener('click', sortByPriority);
+function sortByPriority() {
+
+  if (taskListData) {
+    function compare(a, b) {
+
+      const priorityOne = a.gfNum;
+      const priorityTwo = b.gfNum;
+
+      let comparison = 0;
+      if (priorityOne < priorityTwo) {
+        comparison = 1;
+      } else if (priorityOne > priorityTwo) {
+        comparison = -1;
+      }
+      return comparison;
+    }
+
+    taskListData.sort(compare);
+  }
+
+  addTasksToList(taskListData);
+
+}
+
+// Sort by completed
+const sortByCompletedButton = document.querySelector('#sort-completed');
+
+sortByCompletedButton.addEventListener('click', sortByCompleted);
+function sortByCompleted() {
+
+  if (taskListData) {
+    function compare(a, b) {
+
+      const priorityOne = a.isCompleted;
+      const priorityTwo = b.isCompleted;
+
+      let comparison = 0;
+      if (priorityOne > priorityTwo) {
+        comparison = 1;
+      } else if (priorityOne < priorityTwo) {
+        comparison = -1;
+      }
+      return comparison;
+    }
+
+    taskListData.sort(compare);
+  }
+
+  addTasksToList(taskListData);
+
+
+}
+
+
+
+function addTasksToList(taskList) {
+
+  tasksSection.innerHTML = '';
+
+  for (let task of taskList) {
+    let grapefruitImgHTML = '';
+
+    for (let i = 0; i < task.gfNum; i++) {
+      grapefruitImgHTML += '<img src="./grapefruit-icon.png">\n';
+    }
+
+    let checkedHTML;
+
+    if (task.isCompleted === false) {
+      checkedHTML = `<i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
+      <p class='task-name'>${task.task}</p>`
+    } else if (task.isCompleted === true) {
+      checkedHTML = `<i class="fa fa-check-circle fa-lg circle-checked" aria-hidden="true"></i>
+      <p class='task-name task-completed'>${task.task}</p>`
+    }
+
+    const newTaskHMTL = `
+    <div class="task-item">
+        <div class="task-left">
+          ${checkedHTML}
+        </div>
+        <div class="task-right">
+          <div class='task-priority'>
+            ${grapefruitImgHTML}
+          </div>
+          <p class='task-edit'>EDIT</p>
+          <i class="fa fa-times-circle fa-lg" aria-hidden="true"></i>
+        </div>
+      </div>
+    `;
+
+    tasksSection.insertAdjacentHTML('beforeend', newTaskHMTL);
+
+  }
+}
+
+
+
+
+// EDIT FUNCTION
+tasksSection.addEventListener('click', editTask)
+function editTask(e) {
+  if (e.target.textContent === 'EDIT') {
+
+    addTaskButton.style.display = 'none';
+    submitTaskContainer.style.display = 'flex';
+
+    taskInput.value = e.target.parentElement.parentElement.children[0].children[1].textContent;
+
+  }
+
+}
+

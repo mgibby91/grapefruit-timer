@@ -4,12 +4,11 @@
   box-sizing: border-box;
 }
 
-html,body {
+body {
   font-family: 'Raleway', sans-serif;
   background: rgba(25,210,80, 1);
-  /* background: rgba(250, 146, 113, 1); */
   line-height: 1.6rem;
-  height: 100vh;
+  /* height: 150vh; */
   color: #fff;
 }
 
@@ -202,3 +201,276 @@ nav {
 }
 
 
+/* TASK LIST SECTION */
+
+/* task title */
+.task-container {
+  margin: 50px auto 100px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.task-container .task-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-container .task-title h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+}
+
+.task-container .task-title .sort-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-container .task-title .sort-buttons div {
+  margin-left: 0.75rem;
+  /* border: 1px #fff solid; */
+  border-radius: 3px;
+  padding: 0 0.8rem;
+  font-size: 0.85rem;
+  color: rgba(25,210,80, 1);
+  background: #fff;
+  font-weight: 500;
+}
+
+.task-container .task-title .sort-buttons div:hover {
+  background: rgba(100, 100, 100, 0.25);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+hr {
+  border: 0;
+  height: 1.5px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
+  margin: 0.8rem 0;
+}
+
+/* Add task */
+.task-container .add-task {
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 2px dashed #fff;
+  border-radius: 3px;
+  padding: 0.8rem 0;
+  background: rgba(129, 129, 129, 0.25);
+  /* display: none; */
+}
+
+.task-container .add-task:hover {
+  cursor: pointer;
+  background:rgba(199, 199, 199, 0.25);
+  transition: 0.2s;
+}
+
+.task-container .add-task p {
+  margin-left: 0.5rem;
+  font-weight: 600;
+}
+
+
+/* Task item */
+.task-container .task-item {
+  margin: 0.75rem 0;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color:rgb(139, 139, 139);
+  background: #fff;
+  border-radius: 3px;
+  /* height: 45px; */
+  overflow: auto;
+  line-height: 1rem;
+}
+
+.task-container .task-item .task-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0.8rem;
+  max-width: 60%;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.task-container .task-item .task-left i:hover {
+  color: rgba(25,210,80, 1);
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.task-container .task-item .task-left > * {
+  margin: 0 0.25rem;
+}
+
+.task-container .task-item .task-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.task-container .task-item .task-right > * {
+  margin: 0 0.1rem 0 1.2rem;
+}
+
+.task-container .task-item .task-right .task-priority {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.task-container .task-item .task-right img {
+  width: 22px;
+}
+
+.task-container .task-item .task-right .task-edit:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.task-container .task-item .task-right i:hover {
+  color: rgb(233, 81, 81);
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.task-left .task-completed {
+  text-decoration: line-through;
+}
+
+.task-left .circle-checked {
+  color:rgba(25,210,80, 1);
+}
+
+
+
+/* Submit Task Form */
+.submit-task-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  color: rgb(139, 139, 139);
+  border-radius: 3px;
+  display: none;
+}
+
+.submit-task-container .submit-task-input {
+  display: flex;
+  margin: 1rem;
+}
+
+.submit-task-container .submit-task-input input {
+  width: 450px;
+  border: none;
+  font-size: 1.2rem;
+  color: rgb(139, 139, 139);
+  font-weight: 600;
+}
+
+.submit-task-container .submit-task-input input:focus {
+  outline: none;
+}
+
+.submit-task-container .submit-task-input input::placeholder {
+  color: rgb(201, 201, 201);
+}
+
+.submit-task-container .submit-task-priority {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 465px;
+  margin: 0.5rem auto 2rem;
+  /* border: 1px solid rgb(139, 139, 139); */
+  /* padding: 0.3rem 0; */
+  border-radius: 3px;
+}
+
+.submit-task-container .submit-task-priority h3 {
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+.submit-task-container .submit-task-priority img {
+  width: 22px;
+}
+
+.submit-task-container .submit-task-priority .all-priorities {
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+  align-self: center;
+}
+
+.submit-task-container .submit-task-priority .all-priorities > * {
+  /* padding-left: 0.5rem; */
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background: rgb(231, 231, 231);
+  border-radius: 3px;
+  padding: 0.3rem 1rem;
+  box-shadow: 0 20px 25px -10px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.submit-task-container .submit-task-priority .all-priorities > *:hover {
+  transform: translateY(-2px);
+  /* transition: 0.05s; */
+  cursor: pointer;
+}
+
+.submit-task-container .submit-task-priority .all-priorities .priorities-selected {
+  border: 1.5px solid rgb(233, 81, 81);
+}
+
+
+.submit-task-container .cancel-save {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.8rem;
+  align-items: center;
+  background: rgb(231, 231, 231);
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.submit-task-container .cancel-save > * {
+  margin-left: 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.submit-task-container .cancel-save #save {
+  background: rgb(139, 139, 139);
+  color: #fff;
+  padding: 0.3rem 1.2rem;
+  border-radius: 3px;
+  box-shadow: 0 20px 25px 2px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.submit-task-container .cancel-save #save:hover {
+  cursor: pointer;
+}
+
+.submit-task-container .cancel-save #cancel:hover {
+  cursor: pointer;
+}
