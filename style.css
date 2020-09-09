@@ -307,11 +307,6 @@ hr {
   font-weight: 500;
 }
 
-.task-container .task-item .task-left .task-name {
-  max-width: 100%;
-  overflow: auto;
-}
-
 .task-container .task-item .task-left i:hover {
   color: rgba(25,210,80, 1);
   cursor: pointer;
