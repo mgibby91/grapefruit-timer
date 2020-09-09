@@ -24,11 +24,15 @@ Or: fork this repo, clone onto your local machine and open the `index.html` file
 
 **Increase grapefruit count as you complete working blocks!**
 
-![Screenshot of timer and grapefruit count]()
+![Screenshot of timer and grapefruit count](https://github.com/mgibby91/grapefruit-timer/blob/master/docs/grapefruit-%20grapefruits.png?raw=true)
 
 **Visual display of progress through time block - background change and progress bar!**
 
-![Screenshot of progress through time block]()
+![Screenshot of progress through time block](https://github.com/mgibby91/grapefruit-timer/blob/master/docs/grapefruit-track%20progress.png?raw=true)
+
+**Take short or long breaks as needed**
+
+![Screenshot of breaks](https://github.com/mgibby91/grapefruit-timer/blob/master/docs/grapefruit-break%20time.png?raw=true)
 
 
 ### Personalize Time Blocks
@@ -37,7 +41,7 @@ Or: fork this repo, clone onto your local machine and open the `index.html` file
 
 **Customize your setttings!**
 
-![Screenshot of settings]()
+![Screenshot of settings](https://github.com/mgibby91/grapefruit-timer/blob/master/docs/grapefruit-settings.png?raw=true)
 
 
 ### Task List
@@ -47,11 +51,11 @@ Or: fork this repo, clone onto your local machine and open the `index.html` file
 
 **Create, edit or delete tasks!**
 
-![Screenshot of create, edit or delete task]()
+![Screenshot of create, edit or delete task](https://github.com/mgibby91/grapefruit-timer/blob/master/docs/grapefruit-add%20new.png?raw=true)
 
 **Sort tasks based on property!**
 
-![Screenshot of sorting tasks]()
+![Screenshot of sorting tasks](https://github.com/mgibby91/grapefruit-timer/blob/master/docs/grapefruit-sort%20completed.png?raw=true)
 
 
 
