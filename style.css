@@ -8,7 +8,6 @@ body {
   font-family: 'Raleway', sans-serif;
   background: rgba(25,210,80, 1);
   line-height: 1.6rem;
-  /* height: 150vh; */
   color: #fff;
 }
 
@@ -292,7 +291,6 @@ hr {
   color:rgb(139, 139, 139);
   background: #fff;
   border-radius: 3px;
-  /* height: 45px; */
   overflow: auto;
   line-height: 1rem;
 }
@@ -400,8 +398,6 @@ hr {
   align-items: center;
   width: 465px;
   margin: 0.5rem auto 2rem;
-  /* border: 1px solid rgb(139, 139, 139); */
-  /* padding: 0.3rem 0; */
   border-radius: 3px;
 }
 
@@ -434,7 +430,6 @@ hr {
 
 .submit-task-container .submit-task-priority .all-priorities > *:hover {
   transform: translateY(-2px);
-  /* transition: 0.05s; */
   cursor: pointer;
 }
 
