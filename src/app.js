@@ -130,7 +130,7 @@ function startTimer(whatButton, themeColor, countdownBoolean, minutesTime) {
 
   countdownTimer(countdownBoolean);
 
-  setTimeout(function () {
+  setTimeout(function() {
 
     for (let button of buttonsArray) {
       if (whatButton !== button) {
@@ -261,7 +261,7 @@ function disableButtonsMomentarily() {
   shortBreakButton.style.pointerEvents = 'none';
   longBreakButton.style.pointerEvents = 'none';
 
-  setTimeout(function () {
+  setTimeout(function() {
 
     pompelmoButton.style.pointerEvents = 'all';
     shortBreakButton.style.pointerEvents = 'all';
@@ -376,8 +376,6 @@ function showSettings() {
 
   resetGeneralTimer();
 
-  // mainContainer.classList.toggle('pointer-events-toggle');
-
 }
 
 
@@ -388,9 +386,6 @@ function showSettings() {
 // Task List
 // *****************************************************************************
 
-
-// QUESTION FOR LL - How can I click on document to exit out of submitTaskContainer
-// I think it's not working because of event bubbling
 
 const submitTaskContainer = document.querySelector('.submit-task-container');
 const submitTaskPriority = document.querySelector('.submit-task-priority');
@@ -413,23 +408,12 @@ function hideTaskInput() {
 
 }
 
-// submitTaskPriority.addEventListener('click', switchSelectedPriority);
-// function switchSelectedPriority(e) {
-
-//   if (e.target.className === 'priorities-scale') {
-//     e.target.classList.add('priorities-selected');
-//   } else if (e.target.parentElement.className === 'priorities-scale') {
-//     e.target.parentElement.classList.add('priorities-selected');
-//   }
-
-// }
-
 const priorityChoices = document.querySelectorAll('.priorities-scale');
 
 function toggleSelectedPriorityClass() {
 
   for (let priority of priorityChoices) {
-    priority.addEventListener('click', function () {
+    priority.addEventListener('click', function() {
 
       const selectedPriority = document.querySelector('.priorities-scale.priorities-selected');
 
@@ -494,8 +478,6 @@ function saveTaskToList() {
   }
 
 }
-
-// Maybe add error message if click save and have no input
 
 
 // Delete tasks
@@ -724,19 +706,3 @@ function editTask(e) {
   }
 
 }
-
-
-
-// function timeConverter(UNIX_timestamp) {
-//   const a = new Date(UNIX_timestamp * 1000);
-//   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-//   const year = a.getFullYear();
-//   const month = months[a.getMonth()];
-//   const date = a.getDate();
-//   const hour = a.getHours();
-//   const min = a.getMinutes();
-//   const sec = a.getSeconds();
-//   const time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
-//   return time;
-// }
-// console.log(timeConverter(1592506800));
